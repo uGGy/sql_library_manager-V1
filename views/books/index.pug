@@ -1,0 +1,14 @@
+extends ../layout
+
+block content
+  div.subheader
+    h2 Articles
+    a(href="/books/new", class="btn-new") Create Article &#43;
+    
+  each book in books
+    book
+      h3= book.title
+      include by_line
+      
+      p= book.body
+      a(href = "/books/" + book.id) Read More &rarr;

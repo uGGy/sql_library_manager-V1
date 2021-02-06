@@ -1,0 +1,27 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #7acfee;
+}
+
+a.button {
+  border: 1px outset rgb(14, 14, 15);
+  background-color: rgba(175, 175, 175, 0.788);
+  height:50px;
+  width:50px;
+}
+
+.delete {
+  border: 1px outset rgb(14, 14, 15);
+  background-color: rgba(175, 175, 175, 0.788);
+  height:50px;
+  width:50px;
+}
+
+label {
+  width: 150px;
+  display: inline-block;
+}
