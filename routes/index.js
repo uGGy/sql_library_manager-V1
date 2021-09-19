@@ -54,10 +54,11 @@ router.get('/books/:id', asyncHandler(async (req, res) => {
     const book = await Book.findByPk(req.params.id);
     if (book) {
       res.render('books/update-book', { book, title: book.title})
-    } else {
-      res.sendStatus(404);
+    } 
+    if (res.status(404)) {
+      throw Error('Sorry this book does not exist')
     }
-}));
+  }));
 
 
 // //Update Book
@@ -67,8 +68,9 @@ router.post('/books/:id', asyncHandler(async (req, res) => {
   try {
     book = await Book.findByPk(req.params.id);
     if(book) {
+      // res.render('books/update-book', { book, title: book.title})
       await book.update(req.body);
-      res.redirect("/books/" + book.id); 
+      res.redirect('/books'); 
     } else {
       res.sendStatus(404);
     }
@@ -78,11 +80,12 @@ router.post('/books/:id', asyncHandler(async (req, res) => {
       book.id = req.params.id; 
       res.render("books/update-book", { book, errors: error.errors, title: "Update Book"})
     } else {
-      throw Error;
+      throw Error('Sorry, a problem occured while updating the book details');
     }
   }
 
 }));
+
 
 // Delete Individual Book 
 router.post('/books/:id/delete', asyncHandler( async (req, res) => {
